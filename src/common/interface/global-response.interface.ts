@@ -1,11 +1,12 @@
 interface IGlobalResponse<T> {
-    status: 'success' | 'error';
+    success: boolean;
+    statusCode: number;
     message?: string;
     data?: T;
-    statusCode?: number;
     error?: {
-        description: string;
+        message: string;
         enum: string;
+        stack?: string | undefined;
     };
 }
 

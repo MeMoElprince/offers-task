@@ -1,5 +1,7 @@
-import { Express } from 'express';
-import IGlobalResponse from '../types/global.response';
+import { Express, Router } from 'express';
+import IGlobalResponse from '../common/interface/global-response.interface';
+import GlobalErrorController from '../common/middleware/global-error.controller';
+import { AppError } from '../common/util/AppError';
 
 const routerSetup = (app: Express) =>
     app
@@ -8,17 +10,14 @@ const routerSetup = (app: Express) =>
 
         .use((req, res, next) => {
             console.log(`Request received: ${req.method} ${req.url}`);
-            const response: IGlobalResponse<null> = {
-                status: 'error',
-                data: null,
-                message: 'Route not found',
-                error: {
-                    description: 'The requested route does not exist',
-                    enum: 'ROUTE_NOT_FOUND',
-                },
-                statusCode: 404,
-            };
-            res.status(404).json(response);
-        });
+            return next(
+                AppError.notFound(
+                    'The requested route does not exist',
+                    'ROUTE_NOT_FOUND',
+                ),
+            );
+        })
+
+        .use(GlobalErrorController.handleError);
 
 export default routerSetup;

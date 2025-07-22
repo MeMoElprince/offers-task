@@ -1,0 +1,4 @@
+export enum CustomError {
+    OFFER_NOT_EXISTS = 'OFFER_NOT_EXISTS',
+    OFFER_ALREADY_EXISTS = 'OFFER_ALREADY_EXISTS',
+}

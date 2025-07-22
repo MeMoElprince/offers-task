@@ -1,5 +1,9 @@
-import { Document } from 'mongoose';
+import { Document, Schema } from 'mongoose';
 
 export interface IOffer extends Document {
-    test: string;
+    _id: string;
+    name: string;
+    description?: string;
+    price: number;
+    storeId: Schema.Types.ObjectId;
 }
