@@ -6,6 +6,7 @@ const schema = new Schema<IOffer>({
     description: { type: String, required: false, trim: true },
     price: { type: Number, required: true },
     storeId: { type: Schema.Types.ObjectId, ref: 'Store', required: true },
+    isActive: { type: Boolean, default: true },
 });
 
 export default model<IOffer>('Offer', schema);

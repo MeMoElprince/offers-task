@@ -6,4 +6,5 @@ export interface IOffer extends Document {
     description?: string;
     price: number;
     storeId: Schema.Types.ObjectId;
+    isActive: boolean;
 }
