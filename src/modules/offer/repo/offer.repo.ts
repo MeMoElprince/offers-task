@@ -106,32 +106,17 @@ export class OfferRepo {
 
         return await OfferSchema.aggregate([
             {
-                $lookup: {
-                    from: 'stores',
-                    localField: 'storeId',
-                    foreignField: '_id',
-                    as: 'store',
-                },
-            },
-            { $unwind: '$store' },
-
-            // 👇 $geoNear MUST be the first stage. So we move everything into $lookup pipeline after this
-            {
                 $geoNear: {
                     near: {
                         type: 'Point',
-                        coordinates: userCoords, // [lng, lat]
+                        coordinates: userCoords,
                     },
                     distanceField: 'distance',
-                    key: 'store.geoLocation',
+                    key: 'storeGeoLocation', // Flattened geo field
                     spherical: true,
                 },
             },
-
-            {
-                $match: { isActive: true },
-            },
-
+            { $match: { isActive: true } },
             {
                 $lookup: {
                     from: 'orders',
@@ -140,30 +125,25 @@ export class OfferRepo {
                     as: 'orders',
                 },
             },
-
             {
                 $addFields: {
                     totalOrders: { $size: '$orders' },
                     totalRevenue: { $sum: '$orders.finalAmount' },
                 },
             },
-
+            { $match: { totalOrders: { $gte: 2 } } },
             {
-                $match: {
-                    totalOrders: { $gte: 2 },
+                $lookup: {
+                    from: 'stores',
+                    localField: 'storeId',
+                    foreignField: '_id',
+                    as: 'store',
                 },
             },
-
-            {
-                $sort: {
-                    totalOrders: -1,
-                },
-            },
-
-            {
-                $limit: 10,
-            },
-
+            { $unwind: '$store' },
+            { $sort: { totalOrders: -1 } },
+            { $skip: skip },
+            { $limit: limit },
             {
                 $project: {
                     _id: 1,

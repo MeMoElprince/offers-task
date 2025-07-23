@@ -9,6 +9,12 @@ const schema = new Schema<IOffer>({
     percentageDiscount: { type: Number, required: true, min: 0, max: 100 },
     storeId: { type: Schema.Types.ObjectId, ref: 'Store', required: true },
     isActive: { type: Boolean, default: true },
+    storeGeoLocation: {
+        type: { type: String, enum: ['Point'], default: 'Point' },
+        coordinates: { type: [Number], required: true }, // [longitude, latitude]
+    },
 });
+
+schema.index({ storeGeoLocation: '2dsphere' });
 
 export default model<IOffer>('Offer', schema);

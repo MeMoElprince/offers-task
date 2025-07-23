@@ -10,6 +10,11 @@ export const seedOffer = async () => {
             maximumAmount: 500,
             percentageDiscount: 20,
             storeId: '60c72b2f9b1e8d3f4c8b4568',
+            storeGeoLocation: {
+                type: 'Point',
+                coordinates: [31.2357, 30.0444], // Cairo coordinates
+                // first is the longitude, second is the latitude
+            },
             isActive: true,
         },
         {
@@ -20,6 +25,10 @@ export const seedOffer = async () => {
             maximumAmount: 600,
             percentageDiscount: 30,
             storeId: '60c72b2f9b1e8d3f4c8b4571',
+            storeGeoLocation: {
+                type: 'Point',
+                coordinates: [-121.8863, 37.3382], // San Jose coordinates
+            },
             isActive: true,
         },
         {
@@ -30,6 +39,10 @@ export const seedOffer = async () => {
             maximumAmount: 600,
             percentageDiscount: 10,
             storeId: '60c72b2f9b1e8d3f4c8b4571',
+            storeGeoLocation: {
+                type: 'Point',
+                coordinates: [-121.8863, 37.3382], // San Jose coordinates
+            },
             isActive: true,
         },
         {
@@ -40,6 +53,10 @@ export const seedOffer = async () => {
             maximumAmount: 600,
             percentageDiscount: 10,
             storeId: '60c72b2f9b1e8d3f4c8b4571',
+            storeGeoLocation: {
+                type: 'Point',
+                coordinates: [-121.8863, 37.3382], // San Jose coordinates
+            },
             isActive: false,
         },
     ];

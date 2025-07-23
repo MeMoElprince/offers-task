@@ -8,5 +8,9 @@ export interface IOffer extends Document {
     maximumAmount: number;
     percentageDiscount: number;
     storeId: Schema.Types.ObjectId;
+    storeGeoLocation: {
+        type: 'Point';
+        coordinates: [number, number]; // [longitude, latitude]
+    }
     isActive: boolean;
 }
