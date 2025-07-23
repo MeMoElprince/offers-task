@@ -5,8 +5,14 @@ export interface IOrder extends Document {
     _id: Schema.Types.ObjectId;
     userId: Schema.Types.ObjectId;
     offerId: Schema.Types.ObjectId;
-    quantity: number;
-    itemPrice: number;
-    totalPrice: number;
+    items: {
+        productName: string;
+        price: string;
+        quantity: number;
+        totalPrice: string;
+    }[];
+    amount: number;
+    discount: number;
+    finalAmount: number;
     status: OrderStatusEnum;
 }
