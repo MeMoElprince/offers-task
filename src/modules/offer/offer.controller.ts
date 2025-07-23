@@ -1,19 +1,12 @@
 import { Request, Response } from 'express';
+import { OfferRepo } from './repo/offer.repo';
 
 export class OfferController {
     static async getOffer(req: Request, res: Response) {
         // Logic to get an offer
     }
 
-    static async createOffer(req: Request, res: Response) {
-        // Logic to create an offer
-    }
-
-    static async updateOffer(req: Request, res: Response) {
-        // Logic to update an offer
-    }
-
-    static async deleteOffer(req: Request, res: Response) {
-        // Logic to delete an offer
+    static async getAllOffers(req: Request, res: Response) {
+        return await OfferRepo.findAllOffers();
     }
 }

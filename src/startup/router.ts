@@ -3,10 +3,12 @@ import IGlobalResponse from '../common/interface/global-response.interface';
 import GlobalErrorController from '../common/middleware/global-error.controller';
 import { AppError } from '../common/util/AppError';
 
+import offerRouter from '../modules/offer/offer.module';
+
 const routerSetup = (app: Express) =>
     app
 
-        .use('/api/offers', (req, res, next) => {})
+        .use('/api/offers', offerRouter)
 
         .use((req, res, next) => {
             console.log(`Request received: ${req.method} ${req.url}`);

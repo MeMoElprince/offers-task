@@ -3,7 +3,6 @@ import { JWTTokenEnum } from '../enum/token.enum';
 import { TokenPayloadMap } from '../type/token-type';
 import { sign, verify } from 'jsonwebtoken';
 import { StringValue } from 'ms';
-import { AppError } from './AppError';
 
 export class TokenFactory {
     static generateToken<T extends JWTTokenEnum>(
