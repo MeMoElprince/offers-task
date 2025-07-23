@@ -12,4 +12,9 @@ export class AuthController {
         const signup: ISignupBody = req.body;
         return AuthService.signup(signup);
     }
+
+    static async refreshToken(req: Request, res: Response, next: NextFunction) {
+        const { refreshToken } = req.body;
+        return AuthService.refreshToken(refreshToken);
+    }
 }

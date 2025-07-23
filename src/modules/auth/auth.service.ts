@@ -59,6 +59,37 @@ export class AuthService {
         return newUser;
     }
 
+    static async refreshToken(token: string) {
+        const payload = TokenFactory.verifyToken(JWTTokenEnum.REFRESH, token);
+        if (!payload)
+            throw AppError.forbidden(
+                'Invalid or expired refresh token',
+                CustomError.INVALID_REFRESH_TOKEN,
+            );
+        const user = await UserRepo.findUserById(payload.userId);
+        if (!user)
+            throw AppError.notFound(
+                'User not found',
+                CustomError.USER_NOT_FOUND,
+            );
+        const accessToken = TokenFactory.generateToken(JWTTokenEnum.ACCESS, {
+            userId: user._id.toString(),
+            role: user.role,
+            email: user.email,
+        });
+        return {
+            accessToken,
+            user: {
+                _id: user._id.toString(),
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                role: user.role,
+                phoneNumber: user.phoneNumber,
+            },
+        };
+    }
+
     private static async comparePassword(
         password: string,
         hashedPassword: string,
