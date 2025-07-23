@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { OfferRepo } from './repo/offer.repo';
+import { OfferService } from './offer.service';
 
 export class OfferController {
     static async getOffer(req: Request, res: Response) {
@@ -7,6 +7,6 @@ export class OfferController {
     }
 
     static async getAllOffers(req: Request, res: Response) {
-        return await OfferRepo.findAllOffers();
+        return await OfferService.getAllOffers();
     }
 }

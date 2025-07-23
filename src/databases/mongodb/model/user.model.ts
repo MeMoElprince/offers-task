@@ -1,8 +1,8 @@
-import { Document } from 'mongoose';
+import { Document, Schema } from 'mongoose';
 import { RoleEnum } from '../../../modules/user/enum/role.enum';
 
 export interface IUser extends Document {
-    id: string;
+    _id: Schema.Types.ObjectId;
     firstName: string;
     lastName: string;
     email: string;

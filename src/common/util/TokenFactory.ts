@@ -11,8 +11,10 @@ export class TokenFactory {
     ): string {
         const secret =
             type === JWTTokenEnum.ACCESS
-                ? ENV_VARIABLES.jwtSecret
-                : ENV_VARIABLES.jwtSecret; // TODO handle different secrets for different token types if needed
+                ? ENV_VARIABLES.secretAccessToken
+                : type === JWTTokenEnum.REFRESH
+                ? ENV_VARIABLES.secretRefreshToken
+                : '';
         return sign(payload, secret, {
             expiresIn: ENV_VARIABLES.jwtExpiration as StringValue,
         });
@@ -25,8 +27,10 @@ export class TokenFactory {
         try {
             const secret =
                 type === JWTTokenEnum.ACCESS
-                    ? ENV_VARIABLES.jwtSecret
-                    : ENV_VARIABLES.jwtSecret; // TODO handle different secrets for different token types if needed
+                    ? ENV_VARIABLES.secretAccessToken
+                    : type === JWTTokenEnum.REFRESH
+                    ? ENV_VARIABLES.secretRefreshToken
+                    : ''; // TODO handle different secrets for different token types if needed
             return verify(token, secret) as TokenPayloadMap[T];
         } catch (error) {
             console.error('Token verification failed:', error);

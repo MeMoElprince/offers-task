@@ -4,11 +4,15 @@ import GlobalErrorController from '../common/middleware/global-error.controller'
 import { AppError } from '../common/util/AppError';
 
 import offerRouter from '../modules/offer/offer.module';
+import userRouter from '../modules/user/user.module';
+import authRouter from '../modules/auth/auth.module';
 
 const routerSetup = (app: Express) =>
     app
 
         .use('/api/offers', offerRouter)
+        .use('/api/users', userRouter)
+        .use('/api/auth', authRouter)
 
         .use((req, res, next) => {
             console.log(`Request received: ${req.method} ${req.url}`);

@@ -1,7 +1,7 @@
-import { Document } from 'mongoose';
+import { Document, Schema } from 'mongoose';
 
 export interface IStore extends Document {
-    id: string;
+    _id: Schema.Types.ObjectId;
     name: string;
     description?: string;
     location?: {

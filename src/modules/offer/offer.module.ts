@@ -4,9 +4,6 @@ import wrapperHandler from '../../common/util/wrapper-handler';
 
 const router = express.Router();
 
-router.route('/').get(wrapperHandler(OfferController.getAllOffers, 201));
-
-
-
+router.route('/').get(wrapperHandler(OfferController.getAllOffers));
 
 export default router;

@@ -8,7 +8,8 @@ type Env_Var_Type = {
     baseUrl: string;
     frontUrl: string;
     port: string | number;
-    jwtSecret: string;
+    secretAccessToken: string;
+    secretRefreshToken: string;
     jwtExpiration: string;
     emailHost: string;
     emailPort: string | number;
@@ -26,7 +27,8 @@ const config: Record<EnvironmentEnum, Env_Var_Type> = {
         baseUrl: process.env.BASE_URL_DEV || 'http://localhost:3000',
         frontUrl: process.env.FRONT_URL_DEV || 'http://localhost:5432',
         port: process.env.PORT || 3000,
-        jwtSecret: process.env.JWT_SECRET || '',
+        secretAccessToken: process.env.SECRET_ACCESS_TOKEN || '',
+        secretRefreshToken: process.env.SECRET_REFRESH_TOKEN || '',
         jwtExpiration: process.env.JWT_EXPIRATION || '1d',
         emailHost: process.env.EMAIL_HOST || '',
         emailPort: process.env.EMAIL_PORT || 587,
@@ -41,7 +43,8 @@ const config: Record<EnvironmentEnum, Env_Var_Type> = {
             'mongodb://localhost:27017/offer-task-test',
         frontUrl: process.env.FRONT_URL_TEST || 'http://localhost:5432',
         port: process.env.PORT || 3000,
-        jwtSecret: process.env.JWT_SECRET || '',
+        secretAccessToken: process.env.SECRET_ACCESS_TOKEN || '',
+        secretRefreshToken: process.env.SECRET_REFRESH_TOKEN || '',
         jwtExpiration: process.env.JWT_EXPIRATION || '1d',
         emailHost: process.env.EMAIL_HOST || '',
         emailPort: process.env.EMAIL_PORT || 587,
@@ -56,7 +59,8 @@ const config: Record<EnvironmentEnum, Env_Var_Type> = {
             'mongodb://localhost:27017/offer-task',
         frontUrl: process.env.FRONT_URL_PROD || '',
         port: process.env.PORT || 3000,
-        jwtSecret: process.env.JWT_SECRET || '',
+        secretAccessToken: process.env.SECRET_ACCESS_TOKEN || '',
+        secretRefreshToken: process.env.SECRET_REFRESH_TOKEN || '',
         jwtExpiration: process.env.JWT_EXPIRATION || '1d',
         emailHost: process.env.EMAIL_HOST || '',
         emailPort: process.env.EMAIL_PORT || 587,
