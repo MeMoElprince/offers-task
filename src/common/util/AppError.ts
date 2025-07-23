@@ -4,6 +4,7 @@ export class AppError extends Error {
         public enumToken: string,
         public isOperational: boolean,
         public statusCode: number,
+        public errorData?: any,
     ) {
         super(message);
         this.message = message;
@@ -11,6 +12,7 @@ export class AppError extends Error {
         this.enumToken = enumToken;
         this.isOperational = isOperational;
         this.statusCode = statusCode;
+        this.errorData = errorData;
         Error.captureStackTrace(this, this.constructor);
     }
 
@@ -27,8 +29,8 @@ export class AppError extends Error {
         return new AppError(message, enumToken, true, 404);
     }
 
-    static badRequest(message: string, enumToken: string) {
-        return new AppError(message, enumToken, true, 400);
+    static badRequest(message: string, enumToken: string, data?: any) {
+        return new AppError(message, enumToken, true, 400, data);
     }
 
     static unauthorized(message: string, enumToken: string) {

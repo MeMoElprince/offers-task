@@ -1,7 +1,7 @@
 // src/startup/seeder/index.ts
 import mongoConnect from '../mongodb';
 import { seedUser } from './user.seed';
-import { seedOffer } from './offer.seed'; // if any
+import { seedOffer } from './offer.seed';
 import { seedStore } from './store.seed';
 import { seedOrder } from './order.seed';
 

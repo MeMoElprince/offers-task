@@ -2,12 +2,12 @@ import { JWTTokenEnum } from '../../common/enum/token.enum';
 import { AppError } from '../../common/util/AppError';
 import { TokenFactory } from '../../common/util/TokenFactory';
 import { UserRepo } from '../user/repo/user.repo';
-import { ILoginBody, ISignupBody } from './interface/auth.interface';
+import { LoginDto, SignupDto } from './dto/auth.dto';
 import { CustomError } from './localization/custom.error';
 import bcrypt from 'bcryptjs';
 
 export class AuthService {
-    static async login(login: ILoginBody) {
+    static async login(login: LoginDto) {
         const user = await UserRepo.findUserByEmail(login.email);
         if (
             !user ||
@@ -41,7 +41,7 @@ export class AuthService {
         };
     }
 
-    static async signup(signup: ISignupBody) {
+    static async signup(signup: SignupDto) {
         const existingUser = await UserRepo.findUserByEmail(signup.email);
         if (existingUser) {
             throw AppError.badRequest(

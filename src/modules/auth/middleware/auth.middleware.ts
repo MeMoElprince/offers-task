@@ -49,7 +49,7 @@ export class AuthMiddleware {
         next();
     }
 
-    static async restrictTo(...roles: RoleEnum[]) {
+    static restrictTo(...roles: RoleEnum[]) {
         return (req: Request, res: Response, next: NextFunction) => {
             const user = JSON.parse(req.headers.user as string);
             // Check if the user's role is included in the allowed roles

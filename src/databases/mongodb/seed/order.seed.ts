@@ -71,6 +71,57 @@ export const seedOrder = async () => {
             ],
             status: OrderStatusEnum.PENDING,
         },
+        {
+            _id: '60c72b2f9b1e8d3f4a8b4516',
+            userId: '60c12b2f9b1e8d3f4c8b4564',
+            offerId: '60c72b2f9b1e2d3f4c8a4561',
+            discount: 18,
+            amount: 180,
+            finalAmount: 162,
+            items: [
+                {
+                    productName: '60f7c2f9a2e8d3f4c8b99994',
+                    quantity: 6,
+                    price: 30,
+                    totalPrice: 180,
+                },
+            ],
+            status: OrderStatusEnum.COMPLETED,
+        },
+        {
+            _id: '60c72b2f9b1e8d3f4a1b4516',
+            userId: '60c12b2f9b1e8d3f4c8b4564',
+            offerId: '60c72b2f9b1e2d3f4c8a4561',
+            discount: 18,
+            amount: 180,
+            finalAmount: 162,
+            items: [
+                {
+                    productName: '60f7c2f9a2e8d3f4c8b99994',
+                    quantity: 6,
+                    price: 30,
+                    totalPrice: 180,
+                },
+            ],
+            status: OrderStatusEnum.COMPLETED,
+        },
+        {
+            _id: '60c71b2f9b1e8d3f4a1b4516',
+            userId: '60c12b2f9b1e8d3f4c8b4564',
+            offerId: '60c72b2f9b1e2d3f4c8a4561',
+            discount: 18,
+            amount: 180,
+            finalAmount: 162,
+            items: [
+                {
+                    productName: '60f7c2f9a2e8d3f4c8b99994',
+                    quantity: 6,
+                    price: 30,
+                    totalPrice: 180,
+                },
+            ],
+            status: OrderStatusEnum.COMPLETED,
+        },
     ];
 
     await OrderSchema.deleteMany({

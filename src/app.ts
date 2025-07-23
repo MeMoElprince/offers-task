@@ -1,4 +1,5 @@
 import { config } from 'dotenv';
+import 'reflect-metadata'; // Import reflect-metadata for TypeORM decorators
 
 config({
     path: '.env', // Specify the path to your .env file

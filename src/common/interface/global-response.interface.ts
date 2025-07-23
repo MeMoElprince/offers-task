@@ -6,6 +6,7 @@ interface IGlobalResponse<T> {
     error?: {
         message: string;
         enum: string;
+        data?: object;
         stack?: string | undefined;
     };
 }

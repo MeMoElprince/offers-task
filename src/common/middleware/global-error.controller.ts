@@ -19,6 +19,7 @@ export default class GlobalErrorController {
             error: {
                 enum: err.enumToken || 'UNKNOWN_ERROR',
                 message: err.message || 'An unexpected error occurred.',
+                data: err.errorData || null,
                 stack: undefined,
             },
         };
