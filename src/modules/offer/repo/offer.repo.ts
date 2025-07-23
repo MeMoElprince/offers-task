@@ -1,5 +1,4 @@
 import { PaginationDto } from '../../../common/dto/pagination.dto';
-import { OfferFilterDto } from '../dto/offer.dto';
 import OfferSchema from '../schema/offer.schema';
 
 export class OfferRepo {
@@ -94,6 +93,22 @@ export class OfferRepo {
             { $sort: { totalOrders: -1 } },
             { $skip: skip },
             { $limit: limit },
+            {
+                $project: {
+                    _id: 1,
+                    name: 1,
+                    percentageDiscount: 1,
+                    totalOrders: 1,
+                    totalRevenue: 1,
+                    distance: 1,
+                    store: {
+                        _id: 1,
+                        name: 1,
+                        geoLocation: 1,
+                        description: 1,
+                    },
+                },
+            },
         ]);
     }
 
