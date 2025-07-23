@@ -18,10 +18,28 @@ const schema = new Schema<IStore>(
         email: { type: String, required: false, trim: true, lowercase: true },
         geoLocation: {
             type: {
-                latitude: { type: Number, required: true },
-                longitude: { type: Number, required: true },
+                type: String,
+                enum: ['Point'],
+                required: true,
+                default: 'Point',
             },
-            required: true,
+            coordinates: {
+                type: [Number],
+                required: true,
+                validate: {
+                    validator: function (coords: number[]) {
+                        return (
+                            coords.length === 2 &&
+                            coords[0] >= -180 &&
+                            coords[0] <= 180 && // longitude
+                            coords[1] >= -90 &&
+                            coords[1] <= 90 // latitude
+                        );
+                    },
+                    message:
+                        'Invalid coordinates format. Expected [longitude, latitude]',
+                },
+            },
         },
     },
     {

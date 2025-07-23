@@ -9,4 +9,8 @@ export interface IUser extends Document {
     password: string;
     role: RoleEnum;
     phoneNumber?: string;
+    geoLocation: {
+        type: 'Point';
+        coordinates: [number, number];
+    };
 }

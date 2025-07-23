@@ -4,8 +4,8 @@ import { OrderStatusEnum } from '../enum/status.enum';
 
 const schema = new Schema<IOrder>(
     {
-        userId: { type: Schema.Types.ObjectId, ref: 'Order', required: true },
-        offerId: { type: Schema.Types.ObjectId, required: true },
+        userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+        offerId: { type: Schema.Types.ObjectId, ref: 'Offer', required: true },
         quantity: { type: Number, required: true },
         itemPrice: { type: Number, required: true },
         totalPrice: { type: Number, required: true },

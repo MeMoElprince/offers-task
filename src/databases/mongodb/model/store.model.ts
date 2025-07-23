@@ -11,8 +11,8 @@ export interface IStore extends Document {
         zipCode: string;
     };
     geoLocation: {
-        latitude: number;
-        longitude: number;
+        type: 'Point';
+        coordinates: [number, number];
     };
     contactNumber?: string;
     email?: string;

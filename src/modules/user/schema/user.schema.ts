@@ -17,11 +17,38 @@ const schema = new Schema<IUser>(
         firstName: { type: String, required: true, trim: true },
         lastName: { type: String, required: true, trim: true },
         phoneNumber: { type: String, required: false },
+        geoLocation: {
+            type: {
+                type: String,
+                enum: ['Point'],
+                required: true,
+                default: 'Point',
+            },
+            coordinates: {
+                type: [Number],
+                required: true,
+                validate: {
+                    validator: function (coords: number[]) {
+                        return (
+                            coords.length === 2 &&
+                            coords[0] >= -180 &&
+                            coords[0] <= 180 && // longitude
+                            coords[1] >= -90 &&
+                            coords[1] <= 90 // latitude
+                        );
+                    },
+                    message:
+                        'Invalid coordinates format. Expected [longitude, latitude]',
+                },
+            },
+        },
     },
     {
         timestamps: true,
     },
 );
+
+schema.index({ geolocation: '2dsphere' });
 
 schema.pre('save', function (next) {
     if (!this.isModified('password')) return next();
