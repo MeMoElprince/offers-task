@@ -1,5 +1,4 @@
 import { Express, Router } from 'express';
-import IGlobalResponse from '../common/interface/global-response.interface';
 import GlobalErrorController from '../common/middleware/global-error.controller';
 import { AppError } from '../common/util/AppError';
 

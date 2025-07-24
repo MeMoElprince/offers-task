@@ -22,8 +22,7 @@ const config: Record<EnvironmentEnum, Env_Var_Type> = {
     [EnvironmentEnum.DEVELOPMENT]: {
         environment: EnvironmentEnum.DEVELOPMENT,
         MONGO_URI:
-            process.env.MONGO_URI_DEV ||
-            'mongodb://localhost:27017/offer-task-dev',
+            process.env.MONGO_URI_DEV || 'mongodb://mongo:27017/offer-task',
         baseUrl: process.env.BASE_URL_DEV || 'http://localhost:3000',
         frontUrl: process.env.FRONT_URL_DEV || 'http://localhost:5432',
         port: process.env.PORT || 3000,
@@ -39,8 +38,7 @@ const config: Record<EnvironmentEnum, Env_Var_Type> = {
         environment: EnvironmentEnum.TEST,
         baseUrl: process.env.BASE_URL_TEST || 'http://localhost:3000',
         MONGO_URI:
-            process.env.MONGO_URI_TEST ||
-            'mongodb://localhost:27017/offer-task-test',
+            process.env.MONGO_URI_TEST || 'mongodb://mongo:27017/offer-task',
         frontUrl: process.env.FRONT_URL_TEST || 'http://localhost:5432',
         port: process.env.PORT || 3000,
         secretAccessToken: process.env.SECRET_ACCESS_TOKEN || '',
@@ -55,8 +53,7 @@ const config: Record<EnvironmentEnum, Env_Var_Type> = {
         environment: EnvironmentEnum.PRODUCTION,
         baseUrl: process.env.BASE_URL_PROD || '',
         MONGO_URI:
-            process.env.MONGO_URI_PROD ||
-            'mongodb://localhost:27017/offer-task',
+            process.env.MONGO_URI_PROD || 'mongodb://mongo:27017/offer-task',
         frontUrl: process.env.FRONT_URL_PROD || '',
         port: process.env.PORT || 3000,
         secretAccessToken: process.env.SECRET_ACCESS_TOKEN || '',
