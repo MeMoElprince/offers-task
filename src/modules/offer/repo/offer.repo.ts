@@ -116,10 +116,11 @@ export class OfferRepo {
         userCoords: [number, number],
         paginationDto: PaginationDto,
     ) {
+
         const { page = 1, limit = 10 } = paginationDto;
         const skip = (page - 1) * limit;
 
-        return await OfferSchema.aggregate([
+        return await OfferSchema.aggregate([    
             {
                 $geoNear: {
                     near: {

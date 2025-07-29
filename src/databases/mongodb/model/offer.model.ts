@@ -14,3 +14,8 @@ export interface IOffer extends Document {
     }
     isActive: boolean;
 }
+
+// type sense  (search engine)
+
+// 
+

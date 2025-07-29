@@ -18,3 +18,6 @@ const schema = new Schema<IOffer>({
 schema.index({ storeGeoLocation: '2dsphere' });
 
 export default model<IOffer>('Offer', schema);
+
+// rag approach 
+
